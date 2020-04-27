@@ -1,6 +1,11 @@
 html {
 }
 
+a {
+    color: #666;
+}
+
+
 body {
     color: #555;
     background-color: #eee;
