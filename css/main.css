@@ -2,15 +2,15 @@ html {
 }
 
 body {
-  color: #555;
-  background-color: #eee;
+    color: #555;
+    background-color: #eee;
 
-  font-family: 'Segoe UI', 'Lucida Grande', 'Trebuchet MS', Arial, 'lucida sans unicode', sans-serif;
+    font-family: 'Segoe UI', 'Lucida Grande', 'Trebuchet MS', Arial, 'lucida sans unicode', sans-serif;
 }
 
 body > header,
 body > footer {
-  text-align: center;
+    text-align: center;
 }
 
 body > header {
@@ -19,55 +19,55 @@ body > header {
 body > nav,
 body > main,
 body > footer {
-  margin: 0 auto;
-  padding: 20px;
+    margin: 0 auto;
+    padding: 20px;
 
-  max-width: 500px;
+    max-width: 720px;
 }
 
 body > nav {
-  border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 
-  border-top: 5px solid gray;
+    border-top: 5px solid gray;
 
-  background-color: white;
+    background-color: white;
 }
 
 body > nav > ul {
-  display: flex;
-  align-items: stretch; /* Default */
-  justify-content: space-evenly;
+    display: flex;
+    align-items: stretch; /* Default */
+    justify-content: space-evenly;
 
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  width: 100%;
+    width: 100%;
 }
 
 body > nav > ul > li {
-  display: block;
-  flex: 0 1 auto; /* Default */
+    display: block;
+    flex: 0 1 auto; /* Default */
 
-  list-style-type: none;
+    list-style-type: none;
 }
 
 body > nav > ul > li a {
-  text-decoration: none;
+    text-decoration: none;
 
-  color: inherit;
+    color: inherit;
 }
 
 body > main {
-  /*background-color: white;*/
-  background: linear-gradient(
-      to bottom,
-      white,
-      rgba(1, 1, 1, 0)
-  )
+    /*background-color: white;*/
+    background: linear-gradient(
+            to bottom,
+            white,
+            rgba(1, 1, 1, 0)
+    )
 }
 
 body > main > p {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 /*body > main > p:last-child {
@@ -75,20 +75,20 @@ body > main > p {
 }*/
 
 body > footer {
-  position: fixed;
+    position: fixed;
 
-  right: 0;
-  bottom: 0;
+    right: 0;
+    bottom: 0;
 
-  font-size: 12px;
+    font-size: 12px;
 }
 
 #me {
-  float: left;
+    float: left;
 
-  margin-right: 20px;
+    margin-right: 20px;
 
-  height: 100px;
+    height: 100px;
 
-  border-radius: 4px;
+    border-radius: 4px;
 }

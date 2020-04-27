@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+
+  <title>Oliver Yasuna</title>
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/lc3.css">
+</head>
+<body>
+
+<header><h1>Oliver Yasuna</h1></header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="https://github.com/oliveryasuna">Projects</a></li>
+    <li><a href="lc3.html">LC-3</a></li>
+  </ul>
+</nav>
+
+<main>
+  <p><b>Background & Disclaimer</b></p>
+  <p>
+    I took a course titled <a href="https://mbccweb.massbay.edu/details.aspx?CRSE_ID=001557&Cr=4">Computer Architecture
+    and Assembly Language</a>. The course followed the textbook
+    <a href="https://www.mheducation.com/highered/product/introduction-computing-systems-bits-gates-c-beyond-patt-patel/M9780072467505.html">
+      Introduction to Computing Systems: From Bits & Gates to C & Beyond</a>. Among other topics, this book introduced
+    me to the Little Computer 3 (LC-3) architecture. I have taken it upon myself to write an LC-3 virtual machine, which
+    you can find <a href="https://github.com/oliveryasuna/lc3sim">here</a>. I created this page as a quick reference
+    resource while developing this software.
+  </p>
+  <p>
+    I am not affiliated with the authors of the Little Computer 3 or said book, or any of their derivatives. I am not
+    responsible for any content linked outside of <a href="https://oliveryasuna.github.io/">oliveryasuna.github.io</a>.
+    My knowledge of this page's content is credited to <a href="http://www.ece.utexas.edu/people/faculty/yale-patt">
+    Dr. Yale Patt</a> and <a href="https://ece.illinois.edu/about/directory/faculty/sjp">Dr. Sanjay Patel</a>, the
+    authors of said book, and its publisher, <a href="https://www.mheducation.com/">McGraw Hill</a>, and Dr. Harold
+    Riggs, the professor who taught said course. This is for academic purposes only. I cannot claim any information
+    as accurate and advise it not be used for commercial application or academic coursework. If you would like to
+    contribute to this page, please email me <a href="mailto:o_yasuna@massbay.edu?subject=">here</a>.
+  </p>
+  <p>
+    This page is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.
+    Copyright noted at the bottom-right of this page.
+  </p>
+  <br>
+  <section id="overview">
+    <header>Overview</header>
+    <p>
+      <b>Memory address space</b> - <code>65,535</code> locations, each containing one signed word (<code>16</code>
+      bits). Addresses are numbered by an unsigned <code>16</code> bit value. Specific regions of memory are reserved;
+      details later.
+    </p>
+    <p>
+      <b>Bit numbering</b> - Bits are numbered <code>(0,n)</code>, where <code>n=number of bits</code>, from
+      right-to-left.
+    </p>
+    <p>
+      <b>Instructions</b> - <code>16</code> bits that <i>instruct</i> the computer. Bits <code>[15,12]</code> specify
+      the operation (opcode) and bits <code>[11,0]</code> specify information for the instruction, such as arguments.
+      There are <code>16</code> standard instructions total; details later.
+    </p>
+    <p>
+      <b>Program counter (PC)</b> - A <code>16</code> bit register containing the address of the next instruction to be
+      processed.
+    </p>
+    <p>
+      <b>General purpose registers</b> - Eight <code>16</code> bit registers. Denoted in binary from <code>000</code> to
+      <code>111</code> and in assembly <code>Rn</code>, where <code>n=register number [0,7]</code>.
+    </p>
+  </section>
+  <section id="reserved-memory">
+    <header>Reserved Memory</header>
+    <p>
+      The LC-3 expects user programs to exist in the range <code>[x3000,xFDFF]</code>. Any user code outside of this
+      range may corrupt built-in system functionality.
+    </p>
+    <table class="memory-space">
+      <tr>
+        <th>Address Start</th>
+        <th>Memory</th>
+      </tr>
+      <tr>
+        <td>x0000 (0)</td>
+        <td>Trap Vector Table</td>
+      </tr>
+      <tr>
+        <td>x0100 (256)</td>
+        <td>Interrupt Vector Table</td>
+      </tr>
+      <tr>
+        <td>x0200 (512)</td>
+        <td>OS and Supervisor Stack</td>
+      </tr>
+      <tr>
+        <td>x3000 (12288)</td>
+        <td>User Programs</td>
+      </tr>
+      <tr>
+        <td>xFE00 (65280)</td>
+        <td>Device Register Addresses</td>
+      </tr>
+    </table>
+    <p></p>
+  </section>
+  <section id="instruction-set">
+    <header>Instruction Set</header>
+    <p>
+      Instructions perform <i>tasks</i> on the computer. Before the instruction at the current <code>PC</code> is
+      executing, <code>PC</code> is incremented.
+    </p>
+    <table id="instructions">
+      <tr>
+        <th>Bit/Instruction</th>
+        <th>15</th>
+        <th>14</th>
+        <th>13</th>
+        <th>12</th>
+        <th>11</th>
+        <th>10</th>
+        <th>9</th>
+        <th>8</th>
+        <th>7</th>
+        <th>6</th>
+        <th>5</th>
+        <th>4</th>
+        <th>3</th>
+        <th>2</th>
+        <th>1</th>
+        <th>0</th>
+      </tr>
+      <tr>
+        <th colspan="17">Operation</th>
+      </tr>
+      <tr>
+        <td>ADD</td>
+        <td colspan="4">0001</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">SR1<sup>1</sup></td>
+        <td>0</td>
+        <td colspan="2">00</td>
+        <td colspan="3">SR2<sup>1</sup></td>
+      </tr>
+      <tr>
+        <td>ADD</td>
+        <td colspan="4">0001</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">SR1<sup>1</sup></td>
+        <td>1</td>
+        <td colspan=5">imm5<sup>2</sup></td>
+      </tr>
+      <tr>
+        <td>AND</td>
+        <td colspan="4">0101</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">SR1<sup>1</sup></td>
+        <td>0</td>
+        <td colspan="2">00</td>
+        <td colspan="3">SR2<sup>1</sup></td>
+      </tr>
+      <tr>
+        <td>AND</td>
+        <td colspan="4">0101</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">SR1<sup>1</sup></td>
+        <td>1</td>
+        <td colspan=5">imm5<sup>2</sup></td>
+      </tr>
+      <tr>
+        <td>NOT</td>
+        <td colspan="4">1001</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">SR<sup>1</sup></td>
+        <td colspan="6">111111</td>
+      </tr>
+      <tr>
+        <th colspan="17">Data Movement</th>
+      </tr>
+      <tr>
+        <td>LD</td>
+        <td colspan="4">0010</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>LDI</td>
+        <td colspan="4">1010</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>LDR</td>
+        <td colspan="4">0110</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="3">BaseR<sup>1</sup></td>
+        <td colspan="6">offset6<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>LEA</td>
+        <td colspan="4">1110</td>
+        <td colspan="3">DR<sup>1</sup></td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>ST</td>
+        <td colspan="4">0011</td>
+        <td colspan="3">SR<sup>1</sup></td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>STI</td>
+        <td colspan="4">1011</td>
+        <td colspan="3">SR<sup>1</sup></td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>STR</td>
+        <td colspan="4">0111</td>
+        <td colspan="3">SR<sup>1</sup></td>
+        <td colspan="3">BaseR<sup>1</sup></td>
+        <td colspan="6">offset6<sup>3</sup></td>
+      </tr>
+      <tr>
+        <th colspan="17">Control</th>
+      </tr>
+      <tr>
+        <td>BR</td>
+        <td colspan="4">0000</td>
+        <td>n</td>
+        <td>z</td>
+        <td>p</td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>JMP</td>
+        <td colspan="4">1100</td>
+        <td colspan="3">000</td>
+        <td colspan="3">BaseR<sup>1</sup></td>
+        <td colspan="6">000000</td>
+      </tr>
+      <tr>
+        <td>JSR</td>
+        <td colspan="4">0100</td>
+        <td>1</td>
+        <td colspan="11">PCoffset11<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>JSRR</td>
+        <td colspan="4">0100</td>
+        <td>0</td>
+        <td colspan="2">00</td>
+        <td colspan="9">PCoffset<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>RET</td>
+        <td colspan="4">1100</td>
+        <td colspan="3">000</td>
+        <td colspan="3">111</td>
+        <td colspan="6">000000</td>
+      </tr>
+      <tr>
+        <td>RTI</td>
+        <td colspan="4">1000</td>
+        <td colspan="12">000000000000</td>
+      </tr>
+      <tr>
+        <td>TRAP</td>
+        <td colspan="4">1111</td>
+        <td colspan="4">0000</td>
+        <td colspan="8">trapvect8</td>
+      </tr>
+      <tr>
+        <th colspan="17">Other</th>
+      </tr>
+      <tr>
+        <td><i>reserved</i></td>
+        <td colspan="4">1101</td>
+        <td colspan="12"></td>
+      </tr>
+    </table>
+    <p>
+      <sup>1</sup> Register parameters. The value of the register is read. <code>DR</code> is a destination;
+      <code>SR</code>, <code>SR1</code>, and <code>SR2</code> are a source; <code>BaseR</code> is either a destination
+      or source.
+    </p>
+    <p>
+      <sup>2</sup> <code>5</code> bit immediate (literal) value.
+    </p>
+    <p>
+      <sup>3</sup> Memory offsets. The offset is relative to the <code>PC</code>. The number at the end of the parameter
+      name indicates the bit count. In assembly, you can use <code>LABEL</code>s instead of hexadecimal or decimal
+      values.
+    </p>
+  </section>
+  <section id="trap-routines">
+    <header>TRAP Routines</header>
+    <p>
+      TRAP routines are built-in functionality. In assembly, they can be called using the <code>TRAP</code> instruction,
+      or directly by their assembly symbol.
+    </p>
+    <table id="trap-vectors">
+      <tr>
+        <th>Vector</th>
+        <th>Symbol</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>x20</td>
+        <td>GETC</td>
+        <td>Reads a single character from the input, with no echo. The value is stored in <code>R0</code>.</td>
+      </tr>
+      <tr>
+        <td>x21</td>
+        <td>OUT</td>
+        <td>Writes a single character to the console. The value is taken from <code>R0</code>.</td>
+      </tr>
+      <tr>
+        <td>x22</td>
+        <td>PUTS</td>
+        <td>
+          Writes a string to the console. The value is taken from memory, using the value of <code>R0</code> as the
+          address of the first character and incrementing until the memory's value is <code>x0000</code>.
+        </td>
+      </tr>
+      <tr>
+        <td>x23</td>
+        <td>IN</td>
+        <td>Writes a prompt to the console and reads a single character from the input, with echo.</td>
+      </tr>
+      <tr>
+        <td>x25</td>
+        <td>HALT</td>
+        <td>Halts the program.</td>
+      </tr>
+    </table>
+    <p></p>
+  </section>
+</main>
+
+<footer>Copyright (c) 2020 Oliver Yasuna</footer>
+
+</body>
+</html>

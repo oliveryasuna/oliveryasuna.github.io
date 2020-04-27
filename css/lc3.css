@@ -1,0 +1,64 @@
+code {
+    background-color: #eefefe;
+}
+
+header {
+    font-size: larger;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+table {
+    border-collapse: collapse;
+
+    background-color: #eeeeee;
+}
+
+tr {
+}
+
+tr:first-of-type {
+    border-bottom: 2px solid black;
+}
+
+tr:not(:first-of-type) {
+    border-bottom: 1px dotted black;
+}
+
+tr:not(:first-of-type) th {
+    text-align: center;
+
+    border-bottom: 1px solid black;
+}
+
+/* If I want every other darker. */
+tr:nth-child(even) {
+    background-color: #dfdfdf;
+}
+
+th {
+}
+
+td {
+}
+
+td:not(:last-of-type) {
+    border-right: 1px solid black;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 4px;
+}
+
+#instructions th:not(:first-child),
+#instructions td:not(:first-child) {
+    text-align: center;
+}
+
+#trap-vectors th:nth-of-type(2),
+#trap-vectors td:nth-of-type(2) {
+    text-align: center;
+}
