@@ -12,6 +12,9 @@ body {
   font-family: 'Segoe UI', 'Lucida Grande', 'Trebuchet MS', Arial, 'lucida sans unicode', sans-serif;
 }
 
+#body-wrapper {
+}
+
 #body-wrapper > header,
 #body-wrapper > footer {
   text-align: center;
@@ -35,6 +38,8 @@ body {
   border-top: 5px solid gray;
 
   background-color: white;
+
+  box-shadow: 0 0 3px rgba(128, 128, 128, 0.2);
 }
 
 #body-wrapper > nav > ul {
@@ -62,12 +67,13 @@ body {
 }
 
 #body-wrapper > main {
-  /*background-color: white;*/
-  background: linear-gradient(
+  background-color: white;
+  /*background: linear-gradient(
           to bottom,
           white,
-          rgba(1, 1, 1, 0)
-  )
+          rgba(1, 1, 1, 0))*/
+
+  box-shadow: 0 10px 10px rgba(128, 128, 128, 0.2);
 }
 
 #body-wrapper > main > p {
