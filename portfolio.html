@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="UTF-8">
 
   <title>Oliver Yasuna - Portfolio</title>
+  <meta name="description" content="Oliver Yasuna's Website - Portfolio">
+  <meta name="author" content="Oliver Yasuna">
 
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="external/normalize/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="external/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 
 <div id="body-wrapper">
-  <header><h1>Oliver Yasuna</h1></header>
 
-  <nav>
+  <header id="primary-header"><h1>Oliver Yasuna</h1></header>
+
+  <nav id="primary-nav">
     <ul>
       <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li><a href="portfolio.html"><i class="fa fa-fw fa-book"></i> Portfolio</a></li>
+      <li class="active"><a href="portfolio.html"><i class="fa fa-fw fa-book"></i> Portfolio</a></li>
       <li><a href="https://github.com/oliveryasuna"><i class="fa fa-fw fa-github"></i> GitHub</a></li>
-      <li><a href="res/Oliver%20Yasuna%20Resume.pdf"><i class="fa fa-fw fa-user"></i> Resume</a></li>
+      <li><a href="resources/Oliver%20Yasuna%20Resume.pdf"><i class="fa fa-fw fa-user"></i> Resume</a></li>
     </ul>
   </nav>
 
-  <main>
+  <main id="primary-main">
     <p>
       <a href="https://github.com/oliveryasuna/gimme-dom"><span style="font-weight: 500;">Gimme DOM</span></a> (WIP)
     </p>
@@ -42,7 +45,8 @@
     </p>
   </main>
 
-  <footer>Copyright (c) 2020 Oliver Yasuna</footer>
+  <footer id="primary-footer">Copyright (c) 2020 Oliver Yasuna</footer>
+
 </div>
 
 <div class="loader-wrapper loader-wrapper-hidden">
@@ -52,7 +56,7 @@
 </div>
 
 <script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/scripts.js"></script>
 
 </body>
 </html>
