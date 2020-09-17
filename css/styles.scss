@@ -26,6 +26,12 @@ body {
 
 a {
   color: $link-color;
+
+  &[href='#'] {
+    text-decoration: none;
+
+    cursor: unset;
+  }
 }
 
 ul {

@@ -16,6 +16,10 @@ body ::-webkit-scrollbar-thumb {
 a {
   color: #666666;
 }
+a[href="#"] {
+  text-decoration: none;
+  cursor: unset;
+}
 
 ul {
   margin-top: 0.5em;
