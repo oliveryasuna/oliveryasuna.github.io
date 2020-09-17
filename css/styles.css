@@ -26,14 +26,6 @@ pre {
   margin: 0.5em 0;
 }
 
-.tooltip {
-  display: inline-block;
-  position: relative;
-}
-.tooltip:hover .tooltip-content {
-  visibility: visible;
-}
-
 #body-wrapper {
   margin: 0 auto;
   max-width: 720px;
