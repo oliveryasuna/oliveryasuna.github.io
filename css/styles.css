@@ -1,16 +1,18 @@
-body {
-  color: #555555;
-  background-color: #eeeeee;
-  font-family: "Segoe UI", "Lucida Grande", "Trebuchet MS", Arial, "lucida sans unicode", sans-serif;
-}
-body ::-webkit-scrollbar,
-body ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
   width: 5px;
   height: 5px;
   background-clip: padding-box;
 }
-body ::-webkit-scrollbar-thumb {
+
+::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0 2.5px;
+}
+
+body {
+  color: #555555;
+  background-color: #eeeeee;
+  font-family: "Segoe UI", "Lucida Grande", "Trebuchet MS", Arial, "lucida sans unicode", sans-serif;
 }
 
 a {
@@ -71,6 +73,12 @@ pre {
 #body-wrapper #primary-nav ul li:not(.active):active {
   color: black;
   background-color: #d5d5d5;
+}
+@media (max-width: 320px) {
+  #body-wrapper #primary-nav ul li i {
+    display: block;
+    margin: 0 auto;
+  }
 }
 #body-wrapper #primary-nav ul li a {
   display: block;
