@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Oliver Yasuna - Home</title>
+
+  <meta name="description" content="Oliver Yasuna's Website - Home">
+  <meta name="author" content="Oliver Yasuna">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="external/normalize/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="external/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/fun.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div id="body-wrapper">
+
+  <header id="primary-header"><h1>Oliver Yasuna</h1></header>
+
+  <nav id="primary-nav">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
+      <li><a href="portfolio.html"><i class="fa fa-fw fa-book"></i> Portfolio</a></li>
+      <li class="active"><a href="fun.html"><i class="fa fa-fw fa-gamepad"></i> Fun</a></li>
+      <li><a href="https://github.com/oliveryasuna"><i class="fa fa-fw fa-github"></i> GitHub</a></li>
+      <li><a href="resources/Oliver%20Yasuna%20-%20Resume.pdf"><i class="fa fa-fw fa-user"></i> Resume</a></li>
+    </ul>
+  </nav>
+
+  <main id="primary-main">
+    <div id="fun">
+
+      <h1>Counting</h1>
+
+      <p>Here are some fun counting problems.</p>
+
+      <ol>
+        <li>How many \(3\)-digit even numbers are there?</li>
+
+        <p>There are three spaces (for \(3\)-digits), when read left-to-right, represent the number's place value
+          \(\left\{\text{hundreds},\text{tens},\text{ones}\right\}\).<br/></p>
+        <p>The question can be answered by working right-to-left:</p>
+        <p>The third space's digit must be even for the number to be even. Therefore, the third space's digit must be in the set
+          \(\left\{0,2,4,6,8\right\}\) (\(5\) choices).</p>
+        <p>The second space's digit can be any single-digit. Therefore, the second space's digit must be in the interval \(\left[0,9\right]\)
+          (\(10\) choices).</p>
+        <p>The first space's digit must be positive. Therefore, the first space's digit must be in the interval \(\left[1,9]\right]\) (\(9\) choices).</p>
+        <p>Now, the number of choices for each space are multipled:</p>
+        <p>\(5*10*9=450\)</p>
+        <p>Therefore, the answer is \(450\) numbers.</p>
+
+        <li>More to come... (maybe)</li>
+      </ol>
+
+    </div>
+  </main>
+
+  <footer id="primary-footer">Copyright (c) 2020 Oliver Yasuna</footer>
+
+</div>
+
+<div class="loader-wrapper loader-wrapper-hidden">
+  <span class="loader loader-1"></span>
+  <span class="loader loader-2"></span>
+  <span class="loader loader-3"></span>
+</div>
+
+<script src="external/jquery/js/jquery-3.5.1.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</body>
+</html>

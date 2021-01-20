@@ -1,0 +1,58 @@
+body {
+  #fun {
+    // SECTIONING.
+
+    //counter-reset: section;
+
+    h1, .section {
+      counter-reset: subsection;
+
+      /*&:before {
+        counter-increment: section;
+        content: counter(section) ". ";
+      }*/
+    }
+
+    h2, .subsection {
+      counter-reset: subsubsection;
+
+      &:before {
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) ". ";
+      }
+    }
+
+    h3, .subsubsection {
+      counter-reset: subsubsubsection;
+
+      &:before {
+        counter-increment: subsubsection;
+        content: counter(section) "." counter(subsection) "." counter(subsubsubsection) ". ";
+      }
+    }
+
+    h4, .subsubsubsection {
+      counter-reset: subsubsubsubsection;
+
+      &:before {
+        counter-increment: subsubsubsection;
+        content: counter(section) "." counter(subsection) "." counter(subsubsubsection) "." counter(subsubsubsubsection) ". ";
+      }
+    }
+
+    // ENUMERATING.
+
+    ol {
+      list-style-type: decimal;
+
+      > li > ol {
+        list-style-type: lower-alpha;
+
+        > li > ol {
+          list-style-type: lower-roman;
+        }
+      }
+    }
+
+  }
+}
