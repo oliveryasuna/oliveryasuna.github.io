@@ -40,9 +40,19 @@
       </p>
       <p>This application utilizes the following concepts, tools, and frameworks:</p>
       <ul>
-        <li>Spring: As the Java EE application framework in general and for RESTful APIs.</li>
-        <li>Hibernate & JPA: For modeling and mapping relational data between a MySQL database.</li>
-        <li>Vaadin 14: For the front-end user-facing interface.</li>
+        <li><u>Spring</u>: As the Java EE application framework in general and for RESTful APIs.</li>
+        <li><u>Hibernate & JPA</u>: For modeling and mapping relational data between a MySQL database.</li>
+        <li><u>Vaadin 14</u>: For the front-end user-facing interface.</li>
+        <li><u>Tomcat</u>: As the container for applicable Servlets.</li>
+        <li>
+          <u>Selenium</u>: For browser automation to acquire account information belonging to services without public
+          APIs.
+        </li>
+        <li>
+          <u>JSoup</u>: For use with Selenium to parse DOM where applicable. Selenium validates element handles before
+          performing operations, which is unnecessary in all cases and can be significantly slower compared to static
+          parsing with JSoup.
+        </li>
       </ul>
       <p>It is currently under development and the source is not public. I am happy to discuss it further.</p>
     </article>
