@@ -1,0 +1,39 @@
+body #fun h1, body #fun .section {
+  counter-reset: subsection;
+  /*&:before {
+    counter-increment: section;
+    content: counter(section) ". ";
+  }*/
+}
+body #fun h2, body #fun .subsection {
+  counter-reset: subsubsection;
+}
+body #fun h2:before, body #fun .subsection:before {
+  counter-increment: subsection;
+  content: counter(section) "." counter(subsection) ". ";
+}
+body #fun h3, body #fun .subsubsection {
+  counter-reset: subsubsubsection;
+}
+body #fun h3:before, body #fun .subsubsection:before {
+  counter-increment: subsubsection;
+  content: counter(section) "." counter(subsection) "." counter(subsubsubsection) ". ";
+}
+body #fun h4, body #fun .subsubsubsection {
+  counter-reset: subsubsubsubsection;
+}
+body #fun h4:before, body #fun .subsubsubsection:before {
+  counter-increment: subsubsubsection;
+  content: counter(section) "." counter(subsection) "." counter(subsubsubsection) "." counter(subsubsubsubsection) ". ";
+}
+body #fun ol {
+  list-style-type: decimal;
+}
+body #fun ol > li > ol {
+  list-style-type: lower-alpha;
+}
+body #fun ol > li > ol > li > ol {
+  list-style-type: lower-roman;
+}
+
+/*# sourceMappingURL=fun.css.map */
