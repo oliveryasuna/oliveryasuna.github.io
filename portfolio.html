@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>Oliver Yasuna - Portfolio</title>
+  <title>Portfolio - Oliver Yasuna</title>
 
   <meta name="description" content="Oliver Yasuna's Website - Portfolio">
   <meta name="author" content="Oliver Yasuna">
@@ -32,36 +32,46 @@
 
   <main id="primary-main">
     <article class="portfolio-project">
-      <p><a href="#">Hyper</a></p>
+      <p><a href="#">Javabrew</a></p>
       <p>
-        Personal project for financial management. Aggregates and analyzes financial information from multiple sources,
-        including bank, brokerage, 401(k), IRA, 529 Plan, and insurance accounts, credit cards, and loans. Provides
-        utilities to analyzes transactions and trades.
+        The App Store is to Apple and Google Play is to Android. Behind the scenes, these software (package) managers execute textual
+        commands to download, update, and manage installed packages. Homebrew is a package manager designed for advanced users of
+        macOS, as it is used on the command-line only. Just as the App Store provides a frontend for managing packages on Apple devices,
+        Javabrew aims to provide a frontend user-facing interface for Homebrew. Javabrew is written in Java. Development is in process and
+        the source is not public at this time.
+      </p>
+    </article>
+    <article class="portfolio-project">
+      <p><a href="#">Quacken</a></p>
+      <p>
+        Personal Project for financial management. Aggregates financial information from multiple sources, including bank, brokerage,
+        401(k), IRA, 529 Plan, and insurance accounts, credit cards, and loans. Provides utilities to analyze transactions and trades.
+        This application utilizes the following concepts, tools, and frameworks:
       </p>
       <p>This application utilizes the following concepts, tools, and frameworks:</p>
       <ul>
-        <li><u>Spring</u>: As the Java EE application framework in general and for RESTful APIs.</li>
-        <li><u>Hibernate & JPA</u>: For modeling and mapping relational data between a MySQL database.</li>
-        <li><u>Vaadin 14</u>: For the front-end user-facing interface.</li>
-        <li><u>Tomcat</u>: As the container for applicable Servlets.</li>
+        <li>Spring: As the Java EE application framework in general and for RESTful APIs.</li>
+        <li>Hibernate & JPA: For modeling and mapping relational data between a MySQL database.</li>
+        <li>Vaadin 14: For the front-end user-facing interface.</li>
+        <li>Tomcat: As the container for applicable Servlets.</li>
         <li>
-          <u>Selenium</u>: For browser automation to acquire account information belonging to services without public
+          Selenium: For browser automation to acquire account information belonging to services without public
           APIs.
         </li>
         <li>
-          <u>JSoup</u>: For use with Selenium to parse DOM where applicable. Selenium validates element handles before
+          JSoup: For use with Selenium to parse DOM where applicable. Selenium validates element handles before
           performing operations, which is unnecessary in all cases and can be significantly slower compared to static
           parsing with JSoup.
         </li>
       </ul>
-      <p>It is currently under development and the source is not public. I am happy to discuss it further.</p>
+      <p>Quacken development is current paused, due to the development of Javabrew.</p>
     </article>
     <article class="portfolio-project">
       <p><a href="https://github.com/oliveryasuna/gimme-dom">Gimme DOM</a></p>
       <p>
-        A Vaadin 8 extension enabling developers to have more control over the web DOM. My goal here is to solve Vaadin 8's core problem: it does not
-        feel like you are developing web applications. For example, some components lack common event handlers. Others lack important DOM event handlers
-        altogether. Vaadin does not enable developers to modify DOM directly. Gimme DOM aims to implement this.
+        A Vaadin 8 extension, written in Java, enabling developers to have more control over the web DOM. It provides functionality to
+        register listeners for most DOM events and assign DOM elements’ properties and style from the server-side. In summary, this
+        project provides an API for Vaadin developers to directly access the generated DOM content in real-time.
       </p>
     </article>
   </main>
